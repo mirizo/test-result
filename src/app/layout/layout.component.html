@@ -1,0 +1,27 @@
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+
+    <mat-nav-list>
+      <a mat-list-item routerLink='/main/data'>Data</a>
+      <a mat-list-item routerLink='/main/monitor'>Monitor</a>
+      <a mat-list-item routerLink='/main/analysis'>Analysis</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <div class="col-md-0">
+        
+        <button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+      </div>
+      <div class="offset-md-5 col-md-1">
+        <strong>Test result</strong>
+      </div>
+      
+    </mat-toolbar>
+    <span>
+    </span>
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

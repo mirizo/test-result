@@ -1,0 +1,46 @@
+<div style="padding-left: 20%;padding-right: 20%;">
+
+  <mat-form-field style="width: 100%">
+    <input  matInput (keyup)="applyFilter($event.target.value)"  [(ngModel)]="filterValue"placeholder="Filter">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="tests" matSort >
+
+
+    <ng-container matColumnDef="StudentName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> שם תלמיד </th>
+      <td mat-cell *matCellDef="let element"> {{element.StudentName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Grade">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ציון </th>
+      <td mat-cell *matCellDef="let element"> {{element.Grade}} </td>
+    </ng-container>
+    <ng-container matColumnDef="SubjectName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> נושא </th>
+      <td mat-cell *matCellDef="let element"> {{element.SubjectName}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Settings"  >
+      <th mat-header-cell *matHeaderCellDef style="text-align:center">
+        <button mat-mini-fab color="primary">
+          <mat-icon aria-label="הוסף משתמש"  (click)="openDialog()">add</mat-icon>
+        </button>
+      </th>
+  
+      <td mat-cell *matCellDef="let row" >
+        <button mat-icon-button >
+          <mat-icon (click)="openDialog(row)">create</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon (click)="delete(row)">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (dblclick)="openDialog(row)" style="text-align: center"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
+</div>
